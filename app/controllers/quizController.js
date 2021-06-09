@@ -30,6 +30,7 @@ const quizController = {
             // de la vue "login"
             res.render('login', {
                 error: 'Veuillez vous connecter pour jouer !'
+                ffafffaffaafafa
             });
             return;
         }
