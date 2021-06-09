@@ -1,0 +1,49 @@
+<%- include('./partials/header') %> 
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h2 class="h1 display-4"><%= quiz.title %></h2>
+    <p class="lead"><%= quiz.description %></p>
+    <p class="font-weight-bold">par <%= quiz.author.firstname %></p>
+    <p class="lead"><%= quiz.questions.length %> questions</p>
+</div>
+
+<div class="row">
+    <% for (const tag of quiz.tags) { %>
+        <div class="col-3 p-4 text-center">
+            <a class="btn btn-block btn-lg tag tag--<%= tag.name.toLowerCase() %>" href="/tags/<%= tag.id %>">
+                <%= tag.name %> 
+            </a>
+        </div>
+    <% } %> 
+
+</div>
+
+<div class="row">
+    <% let cpt = 1 %>
+
+    <% for (const question of quiz.questions) { %>
+
+        <div class="col-12">
+            <label class="badge level level--<%= question.level.name.toLowerCase() %>">
+                <%= question.level.name %> 
+            </label>
+            <h4>
+                <%= cpt %> - <%= question.question %>
+            </h4>
+            <ol>
+                <% for (const answer of question.answers) { %>
+                    <li>
+                        <%= answer.description %>
+                    </li>
+                <% } %>
+            </ol>
+        </div>
+        <%
+        cpt++ 
+    } %> 
+   
+
+</div>
+
+
+<%- include('./partials/footer') %> 
